@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import DashboardLayout from '@/components/Layout/DashboardLayout';
-import { useUser } from '@/lib/UserContext';
-import styles from './page.module.css';
+import StatsCards      from '@/components/Dashboard/StatsCards';
+import { useUser }     from '@/lib/UserContext';
+import styles          from './page.module.css';
 
 export default function DashboardPage() {
   const { user } = useUser();
@@ -30,7 +31,10 @@ export default function DashboardPage() {
           </button>
         </div>
 
-        {/* Stats + Calls come in Step 3 & 4 */}
+        {/* Stats Cards — live API */}
+        <StatsCards />
+
+        {/* Recent Calls — coming Step 4 */}
       </div>
 
       {/* Logout placeholder */}
