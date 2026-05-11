@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import DashboardLayout from '@/components/Layout/DashboardLayout';
 import StatsCards      from '@/components/Dashboard/StatsCards';
+import RecentCalls     from '@/components/Dashboard/RecentCalls';
 import { useUser }     from '@/lib/UserContext';
 import styles          from './page.module.css';
 
@@ -31,10 +32,11 @@ export default function DashboardPage() {
           </button>
         </div>
 
-        {/* Stats Cards — live API */}
+        {/* Stats Cards */}
         <StatsCards />
 
-        {/* Recent Calls — coming Step 4 */}
+        {/* Recent Calls */}
+        <RecentCalls />
       </div>
 
       {/* Logout placeholder */}
