@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState }    from 'react';
 import DashboardLayout from '@/components/Layout/DashboardLayout';
 import StatsCards      from '@/components/Dashboard/StatsCards';
 import RecentCalls     from '@/components/Dashboard/RecentCalls';
+import LogoutModal     from '@/components/Modals/LogoutModal';
 import { useUser }     from '@/lib/UserContext';
 import styles          from './page.module.css';
 
@@ -39,15 +40,11 @@ export default function DashboardPage() {
         <RecentCalls />
       </div>
 
-      {/* Logout placeholder */}
-      {logoutOpen && (
-        <div style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.3)', zIndex:300, display:'flex', alignItems:'center', justifyContent:'center' }}>
-          <div style={{ background:'#fff', padding:'2rem', borderRadius:'14px', textAlign:'center', fontFamily:'var(--font-sans)' }}>
-            <p style={{ marginBottom:'1rem' }}>Logout modal — coming Step 6</p>
-            <button onClick={() => setLogoutOpen(false)} style={{ padding:'0.5rem 1.5rem', background:'var(--color-primary)', color:'#fff', border:'none', borderRadius:'8px', cursor:'pointer' }}>Close</button>
-          </div>
-        </div>
-      )}
+      {/* Logout Modal */}
+      <LogoutModal
+        isOpen={logoutOpen}
+        onClose={() => setLogoutOpen(false)}
+      />
     </DashboardLayout>
   );
 }
