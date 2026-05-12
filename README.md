@@ -4,7 +4,7 @@ A mock dashboard for [Hintro](https://hintro.ai) built as part of the Frontend D
 
 ## Live Demo
 
-> Add your deployment URL here once deployed
+> https://hintro-dashboard.vercel.app/dashboard
 
 ## Tech Stack
 
