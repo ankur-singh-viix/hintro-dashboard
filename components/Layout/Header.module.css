@@ -171,3 +171,14 @@
   .watchTutorialBtn { padding: var(--space-2); }
   .header { padding: 0 var(--space-4); }
 }
+
+.switcherWrap {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .switcherWrap {
+    display: none;
+  }
+}
