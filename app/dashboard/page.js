@@ -1,22 +1,26 @@
 'use client';
 
-import { useState }    from 'react';
-import DashboardLayout from '@/components/Layout/DashboardLayout';
-import StatsCards      from '@/components/Dashboard/StatsCards';
-import RecentCalls     from '@/components/Dashboard/RecentCalls';
-import LogoutModal     from '@/components/Modals/LogoutModal';
-import { useUser }     from '@/lib/UserContext';
-import styles          from './page.module.css';
+import { useState }           from 'react';
+import DashboardLayout        from '@/components/Layout/DashboardLayout';
+import StatsCards             from '@/components/Dashboard/StatsCards';
+import RecentCalls            from '@/components/Dashboard/RecentCalls';
+import LogoutModal            from '@/components/Modals/LogoutModal';
+import FeedbackModal          from '@/components/Modals/FeedbackModal';
+import FeedbackHistoryModal   from '@/components/Modals/FeedbackHistoryModal';
+import { useUser }            from '@/lib/UserContext';
+import styles                 from './page.module.css';
 
 export default function DashboardPage() {
   const { user } = useUser();
-  const [logoutOpen, setLogoutOpen] = useState(false);
+  const [logoutOpen,          setLogoutOpen]          = useState(false);
+  const [feedbackOpen,        setFeedbackOpen]        = useState(false);
+  const [feedbackHistoryOpen, setFeedbackHistoryOpen] = useState(false);
 
   return (
     <DashboardLayout
-      onLogoutClick={() => setLogoutOpen(true)}
-      onFeedbackOpen={() => {}}
-      onFeedbackHistoryOpen={() => {}}
+      onLogoutClick={()          => setLogoutOpen(true)}
+      onFeedbackOpen={()         => setFeedbackOpen(true)}
+      onFeedbackHistoryOpen={()  => setFeedbackHistoryOpen(true)}
     >
       <div className={styles.page}>
         {/* Welcome banner */}
@@ -40,10 +44,18 @@ export default function DashboardPage() {
         <RecentCalls />
       </div>
 
-      {/* Logout Modal */}
+      {/* Modals */}
       <LogoutModal
         isOpen={logoutOpen}
         onClose={() => setLogoutOpen(false)}
+      />
+      <FeedbackModal
+        isOpen={feedbackOpen}
+        onClose={() => setFeedbackOpen(false)}
+      />
+      <FeedbackHistoryModal
+        isOpen={feedbackHistoryOpen}
+        onClose={() => setFeedbackHistoryOpen(false)}
       />
     </DashboardLayout>
   );
